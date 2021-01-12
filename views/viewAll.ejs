@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+</head>
+<body>
+    <% results.forEach(function(result) { %>
+
+        <div class="divTable" style="width: 100%; border: 1px solid #000">
+                <div class="divTableBody">
+            <div class="divTableRow">
+            <div class="divTableCell">Speed: <%= result.speed %> Mbps</div>
+              <div class="divTableCell">Location: <%= result.location %></div>
+              <div class="divTableCell">ISP: <%= result.isp %></div>
+              <div class="divTableCell"><a href="/view-all/<%= result.id %>">View Test Details</a></a></div>
+            </div>
+        </a>
+          </div>
+        </div>
+        <% }) %>
+        <br />
+</body>
+</html>

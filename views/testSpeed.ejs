@@ -8,7 +8,7 @@
     <h1>SpeedBench</h1>
 
     <form action="/test-speed" method="post">
-      <input type="hidden" name="speed" value="<%= s %>">Speed: <%= s %> Mbps
+      <input type="hidden" name="speed" value="<%= s %>">Speed: <%= Math.round(s) %> Mbps
       <br><br>
       <label for="isp">ISP:</label>
       <input type="hidden" name="isp" value="<%= jsonData.org %>"><%= jsonData.org %>
