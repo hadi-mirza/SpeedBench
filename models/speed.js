@@ -7,18 +7,22 @@ const Schema = mongoose.Schema;
 
 // Schema todo: ISP, user, rating, speed
 
-// const reviewSchema = new Schema({
-//   rating: {type: Number, min: 1, max: 5, default: 5}
-// }, {
-//   timestamps: true
-// });
+const ispSchema = new Schema({
+  name: String,
+  rating: {
+    type: Number, 
+    min: 1, 
+    max: 5, 
+    default: 5}
+}, {
+  timestamps: true
+});
 
 let speedSchema = new Schema(
   {
     speed: Number,
     location: String,
     isp: String,
-    // rating: [reviewSchema]
   },
   {
     timestamps: true,
@@ -26,9 +30,9 @@ let speedSchema = new Schema(
 );
 
 let speedModel = mongoose.model("speed", speedSchema);
-// let reviewModel = mongoose.model('rating', reviewSchema)
+let ispModel = mongoose.model("isp", speedSchema);
 
 module.exports = {
   speedModel,
-  // reviewModel,
+  ispModel,
 };

@@ -36,8 +36,8 @@ function create(req, res, next) {
       speed: Math.round(req.body.speed),
       isp: req.body.isp,
       location: req.body.location,
-      rating: parseInt(req.body.rating),
     },
+
     function (err) {
       if (err) {
         res.send(err.message);

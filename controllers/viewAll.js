@@ -8,7 +8,7 @@ function index(req,res,next) {
 
 async function show(req,res,next) {
     let results = await importSpeed.speedModel.findById(req.params.id)
-    res.send(results)
+    res.render('show', {results})
 }
   
   module.exports = {
