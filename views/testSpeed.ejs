@@ -7,6 +7,26 @@
   <body>
     <h1>SpeedBench</h1>
 
-    <p id="testResult"><%= s %></p>
+    <form action="/test-speed" method="post">
+      <input type="hidden" name="speed" value="<%= s %>">Speed: <%= s %> Mbps
+      <br><br>
+      <label for="isp">ISP:</label>
+      <input type="hidden" name="isp" value="<%= jsonData.org %>"><%= jsonData.org %>
+      <br><br>
+      <label for="location">Location:</label>
+      <input type="hidden" name="location" value="<%= jsonData.city + ", " + jsonData.region %>"><%= jsonData.city + ", " + jsonData.region %>
+      <br><br>
+      <!-- <label for="rating">Rating</label>
+      <select type="text" name="rating">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        </select> -->
+        <br><br>
+      <input type="submit" value="Submit">
+
+    </form>
   </body>
 </html>

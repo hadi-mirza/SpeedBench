@@ -4,5 +4,6 @@ let testSpeedCtrl = require('../controllers/testSpeed.js')
 
 /* GET home page. */
 router.get('/', testSpeedCtrl.index)
+router.post('/', testSpeedCtrl.create)
 
 module.exports = router;

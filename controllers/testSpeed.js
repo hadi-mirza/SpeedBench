@@ -1,5 +1,6 @@
 let importSpeed = require('../models/speed.js')
 const FastSpeedtest = require("fast-speedtest-api");
+const fetch = require('node-fetch');
 
 function index(req,res,next) {
 
@@ -15,14 +16,33 @@ function index(req,res,next) {
     });
     
     speedtest.getSpeed().then(s => {
-        res.render('testSpeed', {s});
+        fetch('http://ipapi.co/json/?key=ap5EaHFEzb3F4wVylNb3ukUwJNk5Fg4SvKrUCFcGgumTWFIeS4')
+    .then(function(response) {
+      response.json().then(jsonData => {
+        res.render('testSpeed', {s,jsonData});
+      });
+    })
     }).catch(e => {
         console.error(e.message);
     });
+}
 
-    // res.render('testSpeed', {speedtest})
+function create(req,res,next) {
+
+    importSpeed.speedModel.create({
+        speed: req.body.speed,
+        isp: req.body.isp,
+        location: req.body.location,
+        rating: parseInt(req.body.rating),
+    }, function(err) {
+        if (err) {
+            res.send(err.message)
+        }
+        res.send('success')
+    })
 }
 
 module.exports = {
     index,
+    create,
 }
