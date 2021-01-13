@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
+const token = process.env.DATABASE_URL;
 
-mongoose.connect('mongodb://localhost/SpeedBenchDB', {
+mongoose.connect(token, {
+  
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
