@@ -7,7 +7,7 @@ const speedApiToken = process.env.SPEEDAPI_URL;
 
 function index(req, res, next) {
   let speedtest = new FastSpeedtest({
-    token: speedApiToken, // required
+    token: 'YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm', // required
     verbose: false, // default: false
     timeout: 10000, // default: 5000
     https: true, // default: true
