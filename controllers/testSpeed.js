@@ -1,10 +1,12 @@
 let importSpeed = require("../models/speed.js");
 const FastSpeedtest = require("fast-speedtest-api");
 const fetch = require("node-fetch");
+const ipApiToken = process.env.IPAPI_URL;
+const speedApiToken = process.env.SPEEDAPI_URL;
 
 function index(req, res, next) {
   let speedtest = new FastSpeedtest({
-    token: "YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm", // required
+    token: speedApiToken, // required
     verbose: false, // default: false
     timeout: 10000, // default: 5000
     https: true, // default: true
@@ -18,7 +20,7 @@ function index(req, res, next) {
     .getSpeed()
     .then((s) => {
       fetch(
-        "http://ipapi.co/json/?key=ap5EaHFEzb3F4wVylNb3ukUwJNk5Fg4SvKrUCFcGgumTWFIeS4"
+        ipApiToken
       ).then(function (response) {
         response.json().then((jsonData) => {
           res.render("testSpeed", { s, jsonData });
