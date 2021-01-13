@@ -47,12 +47,12 @@ async function create(req, res, next) {
             }, async function (err, newIsp) {
                 newIsp.reports.push(newSpeedTest.id)
                 let newIspResult = await newIsp.save()
-                res.send(newIspResult)
+                res.send('ISP does not exist. New ISP added and speed test write success!')
             })
         } else {
             foundIsp.reports.push(newSpeedTest.id)
             let savedResult = await foundIsp.save()
-            res.send(savedResult)
+            res.send('ISP exists. Speed test write success!')
         }
     })
 
