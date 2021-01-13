@@ -1,4 +1,5 @@
 let importSpeed = require("../models/speed.js");
+let importIsp = require("../models/isp.js");
 const FastSpeedtest = require("fast-speedtest-api");
 const fetch = require("node-fetch");
 const ipApiToken = process.env.IPAPI_URL;
@@ -32,39 +33,29 @@ function index(req, res, next) {
     });
 }
 
-function create(req, res, next) {
+async function create(req, res, next) {
 
     let userIsp = req.body.isp
 
-    importSpeed.ispModel.find({name: userIsp}, function(err,results) {
-        
-        // console.log(userIsp)
-        // console.log(typeof results)
-        // console.log(results[0].name)
+    let newSpeedTest = await importSpeed.speedModel.create({speed: Math.round(req.body.speed),location: req.body.location,});
 
-        if (results == '') {
-            importSpeed.ispModel.create({
+    importIsp.ispModel.findOne({name: userIsp}, async function(err,foundIsp) {
+
+        if (!foundIsp) {
+            importIsp.ispModel.create({
                 name: req.body.isp,
+            }, async function (err, newIsp) {
+                newIsp.reports.push(newSpeedTest.id)
+                let newIspResult = await newIsp.save()
+                res.send(newIspResult)
             })
-            console.log('new entry added')
         } else {
-            console.log('nothing added')
+            foundIsp.reports.push(newSpeedTest.id)
+            let savedResult = await foundIsp.save()
+            res.send(savedResult)
         }
     })
 
-    // importSpeed.speedModel.create(
-    //     {
-    //       speed: Math.round(req.body.speed),
-    //       isp: req.body.isp,
-    //       location: req.body.location,
-    //     },
-    //     function (err) {
-    //       if (err) {
-    //         res.send(err.message);
-    //       }
-    //       res.send("success");
-    //     }
-    //   );
 
     // add test data to ispModel
 
