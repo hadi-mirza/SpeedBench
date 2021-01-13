@@ -39,7 +39,6 @@ function create(req, res, next) {
       isp: req.body.isp,
       location: req.body.location,
     },
-
     function (err) {
       if (err) {
         res.send(err.message);

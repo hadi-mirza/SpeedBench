@@ -5,24 +5,16 @@ const Schema = mongoose.Schema;
 
 // step 1. schema
 
-// Schema todo: ISP, user, rating, speed
-
-const ispSchema = new Schema({
-  name: String,
-  rating: {
-    type: Number, 
-    min: 1, 
-    max: 5, 
-    default: 5}
-}, {
-  timestamps: true
+const ispSchema = new Schema(
+  {
+  name: String
 });
 
 let speedSchema = new Schema(
   {
     speed: Number,
     location: String,
-    isp: String,
+    // isp: String, // change to reference
   },
   {
     timestamps: true,
@@ -30,7 +22,7 @@ let speedSchema = new Schema(
 );
 
 let speedModel = mongoose.model("speed", speedSchema);
-let ispModel = mongoose.model("isp", speedSchema);
+let ispModel = mongoose.model("isp", ispSchema);
 
 module.exports = {
   speedModel,

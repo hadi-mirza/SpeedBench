@@ -10,7 +10,6 @@ async function show(req,res,next) {
     let results = await importSpeed.speedModel.findById(req.params.id)
     res.render('show', {results})
 }
-  
   module.exports = {
     index,
     show,
