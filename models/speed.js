@@ -7,14 +7,14 @@ const Schema = mongoose.Schema;
 
 const ispSchema = new Schema(
   {
-  name: String
+  name: String,
 });
 
 let speedSchema = new Schema(
   {
     speed: Number,
     location: String,
-    // isp: String, // change to reference
+    isp: [{type: Schema.Types.ObjectId, ref: 'ISP'}],
   },
   {
     timestamps: true,
