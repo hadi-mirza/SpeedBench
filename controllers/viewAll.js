@@ -1,7 +1,7 @@
 let importSpeed = require("../models/speed.js");
 
 function index(req,res,next) {
-    importSpeed.speedModel.find({}, function(err,results) {
+    importSpeed.speedModel.find({}.sort, function(err,results) {
         res.render('viewAll', {results})
     })
 }
