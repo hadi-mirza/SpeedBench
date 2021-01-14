@@ -42,9 +42,8 @@ async function create(req, res, next) {
     importIsp.ispModel.findOne({name: userIsp}, async function(err,foundIsp) {
 
         if (!foundIsp) {
-            importIsp.ispModel.create({
-                name: req.body.isp,
-            }, async function (err, newIsp) {
+            importIsp.ispModel.create({name: userIsp}, 
+                async function (err, newIsp) {
                 newIsp.reports.push(newSpeedTest.id)
                 let newIspResult = await newIsp.save()
                 res.send('ISP does not exist. New ISP added and speed test write success!')
