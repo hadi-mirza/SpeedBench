@@ -5,5 +5,6 @@ let viewAllCtrl = require('../controllers/viewAll.js')
 /* GET home page. */
 router.get('/', viewAllCtrl.index)
 router.get('/:id', viewAllCtrl.show);
+router.post('/:id/delete', viewAllCtrl.remove);
 
 module.exports = router;

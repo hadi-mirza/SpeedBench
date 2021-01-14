@@ -5,6 +5,8 @@ const speedSchema = new Schema(
   {
     speed: Number,
     location: String,
+    isp: String,
+    isp_id: String,
   },
   {
     timestamps: true,

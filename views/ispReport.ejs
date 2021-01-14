@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>SpeedBench</title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/stylesheets/style.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -14,26 +16,15 @@
             <a class="navbar-brand" href="#">SpeedBench</a>
           </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Home</a></li>
-            <li><a href="/view-all">All Tests</a></li>
+            <li><a href="/">Home</a></li>
+            <li class="active"><a href="/view-all">All Tests</a></li>
             <li><a href="#">ISP Reviews</a></li>
           </ul>
         </div>
       </nav>
-      
-      Speed: <%= results.speed %>
-      <br><br>
-      Location: <%= results.location %>
-      <br><br>
-      This test was taken on <%= results.createdAt.toUTCString() %>
 
-      <form action="/view-all/<%= results.id %>/delete" method="post">
-        <br><br>
-        <input type="submit" value="Delete This Entry">
-  
-      </form>
-
-      <!-- update and delete on this page -->
-      
-  </body>
+    ISP Average Speeds
+    Average Speeds by location
+        <br />
+</body>
 </html>
