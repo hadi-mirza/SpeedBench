@@ -18,6 +18,7 @@ async function remove(req,res) {
   let deletedEntry = await importSpeed.speedModel.findByIdAndDelete({_id: req.params.id})
   res.redirect('/view-all')
 }
+
   module.exports = {
     index,
     show,
