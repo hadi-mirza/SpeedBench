@@ -53,7 +53,7 @@ async function create(req, res, next) {
                 newSpeedTest.isp_id = newIsp.id
                 await newSpeedTest.save()
                 let newIspResult = await newIsp.save()
-                res.send('ISP does not exist. New ISP added and speed test write success!') // change this to ejs view
+                res.render('success') // change this to ejs view
             })
         } else { // ISP is found
             foundIsp.reports.push(newSpeedTest.id)
@@ -61,8 +61,7 @@ async function create(req, res, next) {
             newSpeedTest.isp_id = foundIspId
             await newSpeedTest.save()
             let savedResult = await foundIsp.save()
-            res.send(newSpeedTest)
-            // res.send('ISP exists. Speed test write success!') //change this to ejs view
+            res.render('success') // change this to ejs view
         }
     })
 

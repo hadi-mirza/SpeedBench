@@ -16,15 +16,31 @@
             <a class="navbar-brand" href="#">SpeedBench</a>
           </div>
           <ul class="nav navbar-nav">
-            <li><a href="/">Home</a></li>
-            <li class="active"><a href="/view-all">All Tests</a></li>
-            <li><a href="#">ISP Reviews</a></li>
+            <li><a href="/">Test Speed</a></li>
+            <li><a href="/view-all">All Tests</a></li>
+            <li class="active"><a href="/isp-report">ISP Reports</a></li>
           </ul>
         </div>
       </nav>
 
-    ISP Average Speeds
-    Average Speeds by location
-        <br />
+      <div class="divTable" style="width: 50%; border: 1px solid #000">
+        <div class="divTableBody">
+    <div class="divTableRow">
+    <div class="divTableCell">ISP</div>
+    </div>
+  </div>
+</div>
+
+
+<% isps.forEach(function(isp) { %>
+
+<div class="divTable" style="width: 50%; border: 1px solid #000">
+  <div class="divTableBody">
+<div class="divTableRow">
+<div class="divTableCell"><a href="/isp-report/<%= isp.id %>"><%= isp.name %></a></div>
+</div>
+</div>
+</div>
+<% }) %>
 </body>
 </html>

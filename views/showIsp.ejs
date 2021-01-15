@@ -14,12 +14,19 @@
             <a class="navbar-brand" href="#">SpeedBench</a>
           </div>
           <ul class="nav navbar-nav">
-            <li class="active"><a href="/">Test Speed</a></li>
+            <li><a href="/">Test Speed</a></li>
             <li><a href="/view-all">All Tests</a></li>
             <li><a href="/isp-report">ISP Reports</a></li>
           </ul>
         </div>
       </nav>
-      <h2><a href="/test-speed">Test Your Speed</a></h2>
+
+<h1><%= ispSpeed.name %></h1>
+<h4>Latest tests on this ISP:</h4>
+
+    <% eachSpeed.forEach(function(speed) { %>
+        <li><%= speed.speed %> Mbps</li>
+        <% }) %>
+      
   </body>
 </html>

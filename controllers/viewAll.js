@@ -14,13 +14,10 @@ async function show(req,res,next) {
 }
 
 async function remove(req,res) {
-  let deletedEntry = await importSpeed.speedModel.findByIdAndDelete({_id: req.params.id}, function(err, deleted) {
-    
-    // res.send(deleted.isp_id)
-    res.redirect('/view-all')
-})
-}
 
+  let deletedEntry = await importSpeed.speedModel.findByIdAndDelete({_id: req.params.id})
+  res.redirect('/view-all')
+}
   module.exports = {
     index,
     show,
