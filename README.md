@@ -1,11 +1,17 @@
 # SpeedBench
 
-## Screenshots
-
 ## Usage
 
 - This app is used for benchmarking speed test data from your Internet Service Provider (ISP).
 - The user is able to compare their speed test's with others on the same ISP.
+
+## Screenshots
+
+<img src="/media/speedbench1.png" alt="drawing" width="500"/>
+
+<img src="/media/speedbench2.png" alt="drawing" width="500"/>
+
+<img src="/media/speedbench3.png" alt="drawing" width="500"/>
 
 ## Technologies Used
 
@@ -35,3 +41,5 @@
 ## Deployment
 
 https://speedbench.herokuapp.com/
+
+
