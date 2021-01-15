@@ -35,13 +35,27 @@ function index(req, res, next) {
 async function create(req, res, next) {
 
     let userIsp = req.body.isp
+    let userSpeed = req.body.speed
+    let userLocation = req.body.location
 
-    let newSpeedTest = await importSpeed.speedModel.create({speed: Math.round(req.body.speed),location: req.body.location, isp: '', isp_id: ''});
+    // let userIsp = 'Rogers'
+    // let userSpeed = 358
+    // let userLocation = 'Miami, Florida'
+
+    // let userIsp = 'Bell'
+    // let userSpeed = 78
+    // let userLocation = 'Niagara Falls, Ontario'
+
+    // let userIsp = 'Cogeco'
+    // let userSpeed = 75
+    // let userLocation = 'Wasaga Beach, Ontario'
+
+    let newSpeedTest = await importSpeed.speedModel.create({speed: Math.round(userSpeed),location: userLocation, isp: '', isp_id: ''});
 
     importIsp.ispModel.findOne({name: userIsp}, async function(err,foundIsp) {
 
-      let foundIspId = foundIsp.id
-      let foundIspName = foundIsp.name
+      // let foundIspId = foundIsp.id
+      // let foundIspName = foundIsp.name
       // console.log(foundIspId)
       // console.log(newSpeedTest.id)
 
@@ -49,37 +63,21 @@ async function create(req, res, next) {
             importIsp.ispModel.create({name: userIsp}, 
                 async function (err, newIsp) {
                 newIsp.reports.push(newSpeedTest.id)
-                newSpeedTest.isp = newIsp.id
+                newSpeedTest.isp = newIsp.name
                 newSpeedTest.isp_id = newIsp.id
                 await newSpeedTest.save()
                 let newIspResult = await newIsp.save()
-                res.render('success') // change this to ejs view
+                res.render('success')
             })
         } else { // ISP is found
             foundIsp.reports.push(newSpeedTest.id)
-            newSpeedTest.isp = foundIspName
-            newSpeedTest.isp_id = foundIspId
+            newSpeedTest.isp = foundIsp.name
+            newSpeedTest.isp_id = foundIsp.id
             await newSpeedTest.save()
             let savedResult = await foundIsp.save()
-            res.render('success') // change this to ejs view
+            res.render('success')
         }
     })
-
-
-    // add test data to ispModel
-
-//       importSpeed.ispModel.create(
-//     {
-//       name: 'COEXTRO-01',
-//     },
-//     function (err) {
-//       if (err) {
-//         res.send(err.message);
-//       }
-//       res.send("success");
-//     }
-//   );
-
 }
 
 module.exports = {
