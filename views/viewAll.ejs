@@ -22,20 +22,28 @@
         </div>
       </nav>
 
-    <% results.forEach(function(result) { %>
+      <h1>All Tests</h1>
+      <h4>List of all test's taken:</h4>
 
-        <div class="divTable" style="width: 100%; border: 1px solid #000">
-                <div class="divTableBody">
-            <div class="divTableRow">
-            <div class="divTableCell">Speed: <%= result.speed %> Mbps</div>
-              <div class="divTableCell">Location: <%= result.location %></div>
-              <div class="divTableCell">ISP: <%= result.isp %></div>
-              <div class="divTableCell"><a href="/view-all/<%= result.id %>">View Test Details</a></div>
-            </div>
-          </div>
-        </div>
-        
-        <% }) %>
-        <br />
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Speed</th>
+              <th scope="col">Location</th>
+              <th scope="col">ISP</th>
+              <th scope="col">Details</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% results.forEach(function(result) { %>
+            <tr>
+              <td><%= result.speed %> Mbps</td>
+              <td><%= result.location %></td>
+              <td><%= result.isp %></td>
+              <td><a href="/view-all/<%= result.id %>">View</a></td>
+            </tr>
+            <% }) %>
+          </tbody>
+        </table>
 </body>
 </html>

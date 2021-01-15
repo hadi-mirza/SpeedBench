@@ -1,29 +1,11 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
+samp {
+  font-size: 0.8em;
 }
 
-.divTable{
-	display: table;
-  width: 100%;
-  margin-bottom: 20px;
-}
-.divTableRow {
-  display: table-row;
-  width: 25%;
-}
-.divTableCell, .divTableHead {
-	border: 1px solid #337ab7;
-	display: table-cell;
-  padding: 10px;
-  width: 25%;
-
-}
-.divTableBody {
-  display: table-row-group;
-
+.testNow {
+  width: 50%;
 }
