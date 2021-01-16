@@ -6,6 +6,8 @@ const ipApiToken = process.env.IPAPI_URL;
 
 function index(req, res, next) {
 
+  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
   let speedtest = new FastSpeedtest({
     token: 'YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm', // required
     verbose: false, // default: false
@@ -18,7 +20,7 @@ function index(req, res, next) {
   });
 
   speedtest.getSpeed().then((s) => {
-      fetch(ipApiToken).then(function (response) {
+      fetch('https://ipapi.co/' + ip + 'json/?key=ap5EaHFEzb3F4wVylNb3ukUwJNk5Fg4SvKrUCFcGgumTWFIeS4').then(function (response) {
         response.json().then((jsonData) => {
           res.render("testSpeed", { s, jsonData });
         });
