@@ -22,7 +22,7 @@ function index(req, res, next) {
   speedtest.getSpeed().then((s) => {
       fetch('https://ipapi.co/' + ip + '/json/?key=' + ipApiToken).then(function (response) {
         response.json().then((jsonData) => {
-          res.render("testSpeed", { s, jsonData });
+          res.render("testSpeed", { s, jsonData, ip});
         });
       });
     })
