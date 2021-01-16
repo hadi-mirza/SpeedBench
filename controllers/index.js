@@ -1,6 +1,6 @@
 function index(req, res, next) {
-  res.render("index");
-  console.log(req.ip)
+  let userIp = req.ip
+  res.render("index", {userIp});
 }
 
 module.exports = {
