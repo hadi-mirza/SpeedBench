@@ -18,6 +18,7 @@
 - HTML
 - CSS
 - Javascript
+- Express
 - Mongoose
 - MongoDB
 - Heroku
