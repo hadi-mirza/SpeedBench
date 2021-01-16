@@ -37,18 +37,6 @@ async function create(req, res, next) {
     let userSpeed = req.body.speed
     let userLocation = req.body.location
 
-    // let userIsp = 'Rogers'
-    // let userSpeed = 358
-    // let userLocation = 'Miami, Florida'
-
-    // let userIsp = 'Bell'
-    // let userSpeed = 78
-    // let userLocation = 'Niagara Falls, Ontario'
-
-    // let userIsp = 'Cogeco'
-    // let userSpeed = 75
-    // let userLocation = 'Wasaga Beach, Ontario'
-
     let newSpeedTest = await importSpeed.speedModel.create({speed: Math.round(userSpeed),location: userLocation, isp: '', isp_id: ''});
 
     importIsp.ispModel.findOne({name: userIsp}, async function(err,foundIsp) {
