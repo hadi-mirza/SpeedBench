@@ -1,6 +1,7 @@
 function index(req, res, next) {
-  let userIp = req.ip
-  res.render("index", {userIp});
+  var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+  let userIp = req.ips
+  res.render("index", {userIp, ip});
 }
 
 module.exports = {
