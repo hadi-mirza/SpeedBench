@@ -5,6 +5,7 @@ const fetch = require("node-fetch");
 const ipApiToken = process.env.IPAPI_URL;
 
 function index(req, res, next) {
+
   let speedtest = new FastSpeedtest({
     token: 'YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm', // required
     verbose: false, // default: false
@@ -16,12 +17,8 @@ function index(req, res, next) {
     proxy: "http://optional:auth@my-proxy:123", // default: undefined
   });
 
-  speedtest
-    .getSpeed()
-    .then((s) => {
-      fetch(
-        ipApiToken
-      ).then(function (response) {
+  speedtest.getSpeed().then((s) => {
+      fetch(ipApiToken).then(function (response) {
         response.json().then((jsonData) => {
           res.render("testSpeed", { s, jsonData });
         });
@@ -53,11 +50,6 @@ async function create(req, res, next) {
     let newSpeedTest = await importSpeed.speedModel.create({speed: Math.round(userSpeed),location: userLocation, isp: '', isp_id: ''});
 
     importIsp.ispModel.findOne({name: userIsp}, async function(err,foundIsp) {
-
-      // let foundIspId = foundIsp.id
-      // let foundIspName = foundIsp.name
-      // console.log(foundIspId)
-      // console.log(newSpeedTest.id)
 
         if (!foundIsp) { // No ISP found and is created
             importIsp.ispModel.create({name: userIsp}, 
