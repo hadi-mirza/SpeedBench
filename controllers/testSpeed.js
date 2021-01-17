@@ -40,7 +40,7 @@ async function create(req, res, next) {
     }
     
     if (userIsp == 'BACOM') {
-      userIsp = ' Bell'
+      userIsp = 'Bell'
     }
     
     let userSpeed = req.body.speed
