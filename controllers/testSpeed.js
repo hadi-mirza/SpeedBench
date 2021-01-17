@@ -47,6 +47,10 @@ async function create(req, res, next) {
       userIsp = 'Coextro'
     }
 
+    if (userIsp == 'ROGERS-COMMUNICATIONS') {
+      userIsp = 'Rogers'
+    }
+
     let userSpeed = req.body.speed
     let userLocation = req.body.location
 
