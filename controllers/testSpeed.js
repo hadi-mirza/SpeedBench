@@ -39,7 +39,7 @@ async function create(req, res, next) {
       userIsp = 'Telus'
     }
     
-    if (userIsp == ' BACOM') {
+    if (userIsp == 'BACOM') {
       userIsp = ' Bell'
     }
     
