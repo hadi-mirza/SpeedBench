@@ -34,6 +34,11 @@ function index(req, res, next) {
 async function create(req, res, next) {
 
     let userIsp = req.body.isp
+
+    if (userIsp == 'ASN852') {
+      userIsp = 'Telus'
+    }
+    
     let userSpeed = req.body.speed
     let userLocation = req.body.location
 
