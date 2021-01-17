@@ -42,7 +42,7 @@ async function create(req, res, next) {
     if (userIsp == 'BACOM') {
       userIsp = 'Bell'
     }
-    
+      
     let userSpeed = req.body.speed
     let userLocation = req.body.location
 
