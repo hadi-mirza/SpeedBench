@@ -39,7 +39,7 @@
 
 <ul class="list-group">
 
-<% isps.forEach(function(isp) { %>
+<% isps.slice().reverse().forEach(function(isp) { %>
   <li class="list-group-item"><a href="/isp-report/<%= isp.id %>" class="btn btn-info btn-lg" role="button"><%= isp.name %></a></li>
 <% }) %>
 </ul>

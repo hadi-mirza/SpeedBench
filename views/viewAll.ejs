@@ -45,7 +45,7 @@
             </tr>
           </thead>
           <tbody>
-            <% results.forEach(function(result) { %>
+            <% results.slice().reverse().forEach(function(result) { %>
             <tr>
               <td><%= result.speed %> Mbps</td>
               <td><%= result.location %></td>
