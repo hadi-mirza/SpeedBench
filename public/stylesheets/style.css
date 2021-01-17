@@ -9,3 +9,8 @@ samp {
 .testNow {
   width: 50%;
 }
+
+.btn-lg {
+  height: 100%;
+  width: 100%;
+}
