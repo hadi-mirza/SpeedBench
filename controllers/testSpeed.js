@@ -37,6 +37,8 @@ async function create(req, res, next) {
 
     if (userIsp == 'ASN852') {
       userIsp = 'Telus'
+    } else if (userIsp == ' BACOM') {
+      userIsp = ' Bell'
     }
     
     let userSpeed = req.body.speed
