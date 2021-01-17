@@ -49,7 +49,7 @@ async function create(req, res, next) {
                 newSpeedTest.isp_id = newIsp.id
                 await newSpeedTest.save()
                 let newIspResult = await newIsp.save()
-                res.render('success')
+                console.log('ISP created. Success')
             })
         } else { // ISP is found
             foundIsp.reports.push(newSpeedTest.id)
@@ -57,9 +57,11 @@ async function create(req, res, next) {
             newSpeedTest.isp_id = foundIsp.id
             await newSpeedTest.save()
             let savedResult = await foundIsp.save()
-            res.render('success')
+            console.log('ISP exists. Success')
         }
     })
+    console.log(newSpeedTest)
+    res.render('success', {newSpeedTest})
 }
 
 module.exports = {
