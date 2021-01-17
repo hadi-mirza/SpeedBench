@@ -10,7 +10,7 @@ function index(req,res,next) {
 async function show(req,res,next) {
     let results = await importSpeed.speedModel.findById(req.params.id)
     res.render('show', {results})
-    console.log(req.params.id)
+    console.log(results)
 }
 
 async function remove(req,res) {
