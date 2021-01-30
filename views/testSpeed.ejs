@@ -37,10 +37,10 @@
       <input type="hidden" name="speed" value="<%= s %>"><%= Math.round(s) %> Mbps
       <br><br>
       <label for="isp">ISP:</label>
-      <input type="hidden" name="isp" value="<%= request.asn %>"><%= request.asn %>
+      <input type="hidden" name="isp" value="<%= responseText.asn %>"><%= responseText.asn %>
       <br><br>
       <label for="location">Location:</label>
-      <input type="hidden" name="location" value="<%= request.city + ", " + request.region %>"><%= request.city + ", " + request.region %>
+      <input type="hidden" name="location" value="<%= responseText.city + ", " + responseText.region %>"><%= responseText.city + ", " + responseText.region %>
       <br><br>
       <input type="submit" value="Submit">
       <br><br>

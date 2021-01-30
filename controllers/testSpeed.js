@@ -30,7 +30,7 @@ function index(req, res, next) {
     
       if (this.readyState === 4) {
     console.log(this.responseText);
-    res.render("testSpeed", { s, request, ip});
+    res.render("testSpeed", { s, responseText, ip});
   }
 };
 
