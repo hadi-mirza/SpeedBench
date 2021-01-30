@@ -37,10 +37,10 @@
       <input type="hidden" name="speed" value="<%= s %>"><%= Math.round(s) %> Mbps
       <br><br>
       <label for="isp">ISP:</label>
-      <input type="hidden" name="isp" value="<%= responseText.asn %>"><%= responseText.asn %>
+      <input type="hidden" name="isp" value="<%= response.asn.name %>"><%= response.asn.name %>
       <br><br>
       <label for="location">Location:</label>
-      <input type="hidden" name="location" value="<%= responseText.city + ", " + responseText.region %>"><%= responseText.city + ", " + responseText.region %>
+      <input type="hidden" name="location" value="<%= response.city + ", " + response.region %>"><%= response.city + ", " + response.region %>
       <br><br>
       <input type="submit" value="Submit">
       <br><br>
@@ -48,7 +48,7 @@
     </form>
 
     <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-      <div class="card-header">Public IP: <%= ip %></div>
+      <div class="card-header">Public IP: <%= response.ip %></div>
       <div class="card-body">
         <h5 class="card-title">About your IP Address</h5>
         <p class="card-text">The public IP address is the Internet Protocol address, logged by various servers/devices.   This is when you connect to these devices through your internet connection. The public IP address assigned to the device by the Internet Service Provider as soon as the device has connection to the Internet.</p>

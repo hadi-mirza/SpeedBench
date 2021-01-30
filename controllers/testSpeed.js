@@ -23,19 +23,22 @@ function index(req, res, next) {
 
   speedtest.getSpeed().then((s) => {
 
-    let request = new XMLHttpRequest();
-    request.open('GET', 'https://api.ipdata.co/?api-key=test');
-    request.setRequestHeader('Accept', 'application/json');
-    request.onreadystatechange = function () {
+
+    var request = new XMLHttpRequest();
+
+    request.open('GET', 'https://api.ipdata.co/?api-key=02a538c98342086825d3a0b7e2f885b7f4bd3ca516f9c7cfbcf00b8c');
     
+    request.setRequestHeader('Accept', 'application/json');
+    
+    request.onreadystatechange = function () {
       if (this.readyState === 4) {
-    console.log(this.responseText);
-    res.render("testSpeed", { s, responseText, ip});
-  }
-};
-
-request.send();
-
+        let response = JSON.parse(this.responseText)
+        res.render("testSpeed", { s, response});
+      }
+    };
+    
+    request.send();
+  
       // fetch('https://ipapi.co/' + ip + '/json/?key=' + ipApiToken).then(function (response) {
       //   response.json().then((jsonData) => {
       //     res.render("testSpeed", { s, jsonData, ip});
