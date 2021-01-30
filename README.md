@@ -28,16 +28,13 @@
 ## API's Used
 
 - https://github.com/branchard/fast-speedtest-api
-- https://ipapi.co/
+- https://ipdata.co/
 
 ## Planned Features
 
 - Oauth with Google.
-- Sort all test's in descending order.
 - View average speeds for each ISP.
 - Google Maps API for mapping out locations of where user took the test.
-- Updated styling.
-- Add more data points from ipAPI to give details for tests.
 
 ## Deployment
 
