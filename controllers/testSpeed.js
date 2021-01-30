@@ -1,8 +1,6 @@
 let importSpeed = require("../models/speed.js");
 let importIsp = require("../models/isp.js");
 const FastSpeedtest = require("fast-speedtest-api");
-const fetch = require("node-fetch");
-const ipApiToken = process.env.IPAPI_URL;
 const ipDataToken = process.env.IPDATA_API
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
@@ -42,7 +40,6 @@ async function create(req, res, next) {
 
     let userSpeed = req.body.speed
     let userLocation = req.body.location
-    let userFlag = req.body.flag
     let userThreat = req.body.threat
     let userCurrency = req.body.currency
     let userCountry = req.body.country
@@ -58,7 +55,6 @@ async function create(req, res, next) {
                 newSpeedTest.isp_id = newIsp.id
                 await newSpeedTest.save()
                 let newIspResult = await newIsp.save()
-                console.log('ISP created. Success')
             })
         } else { // ISP is found
             foundIsp.reports.push(newSpeedTest.id)
@@ -66,10 +62,8 @@ async function create(req, res, next) {
             newSpeedTest.isp_id = foundIsp.id
             await newSpeedTest.save()
             let savedResult = await foundIsp.save()
-            console.log('ISP exists. Success')
         }
     })
-    console.log(newSpeedTest)
     res.render('success', {newSpeedTest})
 }
 
