@@ -3,6 +3,7 @@ let importIsp = require("../models/isp.js");
 const FastSpeedtest = require("fast-speedtest-api");
 const fetch = require("node-fetch");
 const ipApiToken = process.env.IPAPI_URL;
+const ipDataToken = process.env.IPDATA_API
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 
@@ -26,7 +27,7 @@ function index(req, res, next) {
 
     var request = new XMLHttpRequest();
 
-    request.open('GET', 'https://api.ipdata.co/?api-key=02a538c98342086825d3a0b7e2f885b7f4bd3ca516f9c7cfbcf00b8c');
+    request.open('GET', 'https://api.ipdata.co/?api-key=' + ipDataToken);
     
     request.setRequestHeader('Accept', 'application/json');
     
@@ -53,22 +54,6 @@ function index(req, res, next) {
 async function create(req, res, next) {
 
     let userIsp = req.body.isp
-
-    if (userIsp == 'ASN852') {
-      userIsp = 'Telus'
-    }
-    
-    if (userIsp == 'BACOM') {
-      userIsp = 'Bell'
-    }
-
-    if (userIsp == 'COEXTRO-01') {
-      userIsp = 'Coextro'
-    }
-
-    if (userIsp == 'ROGERS-COMMUNICATIONS') {
-      userIsp = 'Rogers'
-    }
 
     let userSpeed = req.body.speed
     let userLocation = req.body.location
