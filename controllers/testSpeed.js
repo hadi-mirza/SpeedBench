@@ -34,6 +34,7 @@ function index(req, res, next) {
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
         let response = JSON.parse(this.responseText)
+        // console.log(response.asn.name)
         res.render("testSpeed", { s, response});
       }
     };
