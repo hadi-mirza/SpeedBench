@@ -7,11 +7,11 @@ const ipDataToken = process.env.IPDATA_API
 var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
 
 
-function index(req, res, next) {
+async function index(req, res, next) {
 
   var ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-  let speedtest = new FastSpeedtest({
+  let speedtest = await new FastSpeedtest({
     token: 'YXNkZmFzZGxmbnNkYWZoYXNkZmhrYWxm', // required
     verbose: false, // default: false
     timeout: 10000, // default: 5000
@@ -31,7 +31,7 @@ function index(req, res, next) {
     
     request.setRequestHeader('Accept', 'application/json');
     
-    request.onreadystatechange = function () {
+    request.onreadystatechange =  function () {
       if (this.readyState === 4) {
         let response = JSON.parse(this.responseText)
         let responseAsn = JSON.parse(this.responseText)
