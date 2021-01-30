@@ -7,6 +7,9 @@ const speedSchema = new Schema(
     location: String,
     isp: String,
     isp_id: String,
+    country: String,
+    threat: Boolean,
+    currency: String,
   },
   {
     timestamps: true,

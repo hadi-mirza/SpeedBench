@@ -49,6 +49,22 @@
             <td><%= results.location %></td>
           </tr>
           <tr>
+            <th>Country</th>
+            <td><%= results.country %></td>
+          </tr>
+          <tr>
+            <th>IP Threat Level</th>
+            <td><% if (results.threat == false){ %>
+                <%= 'No Threat (No Malicious Activity Detected)' %>
+                <% } else {%>
+              <%= 'IP Threat Detected (Malicious Activity Detected)' %></td>
+                <% } %>
+          </tr>
+          <tr>
+            <th>Currency</th>
+            <td><%= results.currency %></td>
+          </tr>
+          <tr>
             <th>Date Taken</th>
             <td><%= results.createdAt.toUTCString() %></td>
           </tr>

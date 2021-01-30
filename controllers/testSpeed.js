@@ -23,30 +23,16 @@ async function index(req, res, next) {
   });
 
   speedtest.getSpeed().then((s) => {
-
-
     var request = new XMLHttpRequest();
-
     request.open('GET', 'https://api.ipdata.co/?api-key=' + ipDataToken);
-    
     request.setRequestHeader('Accept', 'application/json');
-    
     request.onreadystatechange =  function () {
       if (this.readyState === 4) {
         let response = JSON.parse(this.responseText)
-        let responseAsn = JSON.parse(this.responseText)
-        console.log(responseAsn.asn)
-        res.render("testSpeed", { s, response, responseAsn});
+        res.render("testSpeed", { s, response});
       }
     };
-    
     request.send();
-  
-      // fetch('https://ipapi.co/' + ip + '/json/?key=' + ipApiToken).then(function (response) {
-      //   response.json().then((jsonData) => {
-      //     res.render("testSpeed", { s, jsonData, ip});
-      //   });
-      // });
     })
 }
 
@@ -56,8 +42,11 @@ async function create(req, res, next) {
 
     let userSpeed = req.body.speed
     let userLocation = req.body.location
-
-    let newSpeedTest = await importSpeed.speedModel.create({speed: Math.round(userSpeed),location: userLocation, isp: '', isp_id: ''});
+    let userFlag = req.body.flag
+    let userThreat = req.body.threat
+    let userCurrency = req.body.currency
+    let userCountry = req.body.country
+    let newSpeedTest = await importSpeed.speedModel.create({speed: Math.round(userSpeed),location: userLocation, isp: '', isp_id: '', country: userCountry, threat: userThreat, currency: userCurrency});
 
     importIsp.ispModel.findOne({name: userIsp}, async function(err,foundIsp) {
 
