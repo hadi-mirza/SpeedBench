@@ -3,6 +3,8 @@ let importIsp = require("../models/isp.js");
 const FastSpeedtest = require("fast-speedtest-api");
 const fetch = require("node-fetch");
 const ipApiToken = process.env.IPAPI_URL;
+var XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+
 
 function index(req, res, next) {
 
@@ -20,11 +22,25 @@ function index(req, res, next) {
   });
 
   speedtest.getSpeed().then((s) => {
-      fetch('https://ipapi.co/' + ip + '/json/?key=' + ipApiToken).then(function (response) {
-        response.json().then((jsonData) => {
-          res.render("testSpeed", { s, jsonData, ip});
-        });
-      });
+
+    let request = new XMLHttpRequest();
+    request.open('GET', 'https://api.ipdata.co/?api-key=test');
+    request.setRequestHeader('Accept', 'application/json');
+    request.onreadystatechange = function () {
+    
+      if (this.readyState === 4) {
+    console.log(this.responseText);
+    res.render("testSpeed", { s, request, ip});
+  }
+};
+
+request.send();
+
+      // fetch('https://ipapi.co/' + ip + '/json/?key=' + ipApiToken).then(function (response) {
+      //   response.json().then((jsonData) => {
+      //     res.render("testSpeed", { s, jsonData, ip});
+      //   });
+      // });
     })
     .catch((e) => {
       console.error(e.message);

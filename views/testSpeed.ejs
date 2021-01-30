@@ -37,10 +37,10 @@
       <input type="hidden" name="speed" value="<%= s %>"><%= Math.round(s) %> Mbps
       <br><br>
       <label for="isp">ISP:</label>
-      <input type="hidden" name="isp" value="<%= jsonData.org %>"><%= jsonData.org %>
+      <input type="hidden" name="isp" value="<%= request.asn %>"><%= request.asn %>
       <br><br>
       <label for="location">Location:</label>
-      <input type="hidden" name="location" value="<%= jsonData.city + ", " + jsonData.region %>"><%= jsonData.city + ", " + jsonData.region %>
+      <input type="hidden" name="location" value="<%= request.city + ", " + request.region %>"><%= request.city + ", " + request.region %>
       <br><br>
       <input type="submit" value="Submit">
       <br><br>
