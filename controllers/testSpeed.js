@@ -34,8 +34,9 @@ function index(req, res, next) {
     request.onreadystatechange = function () {
       if (this.readyState === 4) {
         let response = JSON.parse(this.responseText)
-        // console.log(response.asn.name)
-        res.render("testSpeed", { s, response});
+        let responseAsn = JSON.parse(this.responseText)
+        console.log(responseAsn.asn.name)
+        res.render("testSpeed", { s, response, responseAsn});
       }
     };
     
@@ -47,9 +48,6 @@ function index(req, res, next) {
       //   });
       // });
     })
-    .catch((e) => {
-      console.error(e.message);
-    });
 }
 
 async function create(req, res, next) {
