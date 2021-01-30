@@ -35,7 +35,7 @@ async function index(req, res, next) {
       if (this.readyState === 4) {
         let response = JSON.parse(this.responseText)
         let responseAsn = JSON.parse(this.responseText)
-        console.log(responseAsn.asn.name)
+        console.log(responseAsn.asn)
         res.render("testSpeed", { s, response, responseAsn});
       }
     };
