@@ -1,5 +1,9 @@
 # SpeedBench
 
+## Details
+
+SpeedBench is a speed test benchmarking tool made using fast.com-api, ipData API, Express, Mongoose, and MongoDB. This application helps users globally perform and save their speed tests and also compare tests to others on their same ISP.
+
 ## Usage
 
 - This app is used for benchmarking speed test data from your Internet Service Provider (ISP).
